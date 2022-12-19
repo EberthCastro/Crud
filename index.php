@@ -46,6 +46,10 @@
 
   <section>Read</section>
   <?php
+    require_once "./createDb.php";
+    require_once "./createTable.php";
+    require_once "./createRegs.php";
+
     require_once './src/read/read.php';
     ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
