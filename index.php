@@ -9,6 +9,10 @@ require_once("./Conexion.php");
 $connection = new Conexion();
 $db = $connection->connect();
 
+$v1 =$_GET['var1'];
+if(!$v1 = null){
+  $stmt = $conn->prepare('SELECT * FROM ' . $tablename . ' WHERE `id` = ' . $v1 );
+
 if(isset($_POST['update']))
 {
     // inicializar clase Conexion y llamamos a la función connect.
@@ -18,11 +22,12 @@ if(isset($_POST['update']))
     $tipo = $_POST['tipo'];
     $calorias = $_POST['calorias'];
     $imagen = $_POST['img'];
+    $id = $_POST['id'];
     $update = new Update();
-    $updateFunction = $update->update($name, $origen, $tipo, $calorias, $imagen);
+    $updateFunction = $update->update($name, $origen, $tipo, $calorias, $imagen, $id);
     $result = $db->query($updateFunction);
 }
-
+echo $v1
 ?>
 <head>
     <!-- Required meta tags -->
@@ -40,10 +45,10 @@ if(isset($_POST['update']))
     <h1>Editar</h1>
   
 
-    <form method="post">
+    <form method="post" >
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="nombre">
+            <input type="text" class="form-control" name="nombre" id="nombre" value="" placeholder="<?php $v1?>">
 
         </div>
         <div class="mb-3">
@@ -64,6 +69,10 @@ if(isset($_POST['update']))
             <label for="img" class="form-label">Img</label>
             <input class="form-control" type="file" name="img" id="img">
         </div>
+        <div class="mb-3">
+            <label for="id" class="form-label">Id</label>
+            <input class="text" type="form-control" name="id" id="id">
+        </div>
         <button type="submit" name="update" class="btn btn-primary">Update</button>
     </form>
 
@@ -76,4 +85,5 @@ if(isset($_POST['update']))
 </table>
     
 </body>
+<?php }?>
 </html>
