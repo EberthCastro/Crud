@@ -1,13 +1,18 @@
 <!doctype html>
 <html lang="en">
 <?php 
+
+// include deja pasar el error, pero el require_once no.
 include("./src/update/update.php");
 require_once("./Conexion.php");
 
+$connection = new Conexion();
+$db = $connection->connect();
+
 if(isset($_POST['update']))
 {
-    $connection = new Conexion();
-    $db = $connection->connect();
+    // inicializar clase Conexion y llamamos a la función connect.
+    // definimos los inputs
     $name = $_POST['nombre'];
     $origen = $_POST['origen'];
     $tipo = $_POST['tipo'];
@@ -16,10 +21,7 @@ if(isset($_POST['update']))
     $update = new Update();
     $updateFunction = $update->update($name, $origen, $tipo, $calorias, $imagen);
     $result = $db->query($updateFunction);
-    // $result = mysqli_query($connection, $updateFunction);
 }
-
-
 
 ?>
 <head>
@@ -73,5 +75,4 @@ if(isset($_POST['update']))
 </table>
     
 </body>
-
 </html>

@@ -17,7 +17,6 @@ class Conexion
         } catch (Exception $e){
             $this->connect = 'Error de conexión';
             echo "ERROR: ".$e->getMessage();
-
         }
     }     
     
