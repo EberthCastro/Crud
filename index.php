@@ -68,6 +68,7 @@ if(isset($_POST['update']))
     </form>
 
     <section>Read</section>
+    <?php require_once("./src/read/read.php")?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <table class="table">
 

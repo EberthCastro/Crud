@@ -3,8 +3,8 @@
 class Conexion 
 {
     public $host = "localhost";
-    public $user = "messi";
-    public $password = "argentina";
+    public $user = "root";
+    public $password = "";
     public $db = "recetas";
     // we are created $connect to use for sql instructions
 
@@ -25,6 +25,7 @@ class Conexion
         return $this->connect;
     }
 
+    
 }
 
 ?>
