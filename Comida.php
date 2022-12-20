@@ -22,7 +22,7 @@ class Comida
             return 0;
         }
 
-        $sql = "INSERT INTO comida(Nombre,Origen,Tipo,calorias) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO recetas(nombre,pais_de_origen,tipo_de_dieta,contenido_calorico) VALUES (?,?,?,?)";
         $insert = $this->conexion->prepare($sql);
         $arrData = array($nombreComida, $origenComida, $tipoComida, $caloriasComida);
         $resInsert = $insert->execute($arrData);
@@ -39,7 +39,7 @@ class Comida
    
     public function obtenerComidas(): array
     {
-        $sql = "SELECT * FROM comida";
+        $sql = "SELECT * FROM recetas";
         $execute = $this->conexion->query($sql);
         $request = $execute->fetchall(PDO::FETCH_ASSOC);
         return $request;
@@ -54,7 +54,7 @@ class Comida
         }
 
         // Utilizar sentencia preparada para proteger contra ataques de inyección SQL
-        $sql = "UPDATE comida SET Nombre=?, Origen=?, Tipo=?, Calorias=? WHERE id=?";
+        $sql = "UPDATE recetas SET nombre = ?,pais_de_origen = ?,tipo_de_dieta = ?,contenido_calorico = ?";
         $update = $this->conexion->prepare($sql);
         $arrData = array($nombreComida, $origenComida, $tipoComida, $caloriasComida, $id);
         $resExecute = $update->execute($arrData);
@@ -66,7 +66,7 @@ class Comida
     public function obtenerComida(int $id): array
     {
         // Utilizar sentencia preparada para proteger contra ataques de inyección SQL
-        $sql = "SELECT * FROM comida WHERE id = ?";
+        $sql = "SELECT * FROM recetas WHERE id = ?";
         $arrWhere = array($id);
         $query = $this->conexion->prepare($sql);
         $query->execute($arrWhere);
@@ -84,7 +84,7 @@ class Comida
     public function eliminarComida(int $id): bool
     {
         // Utilizar sentencia preparada para proteger contra ataques de inyección SQL
-        $sql = "DELETE FROM comida WHERE id = ?";
+        $sql = "DELETE FROM recetas WHERE id = ?";
         $arrWhere = array($id);
         $del = $this->conexion->prepare($sql);
         $delete = $del->execute($arrWhere);

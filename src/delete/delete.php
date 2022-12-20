@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <?php
 
 class delete extends Conexion 
@@ -19,3 +21,4 @@ class delete extends Conexion
 }
 
 ?>
+>>>>>>> 7ccf05b140f8f2aac0c3a7ad119e01cf5bf42e03

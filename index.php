@@ -1,59 +1,79 @@
 <!doctype html>
 <html lang="en">
+<?php 
 
+// include deja pasar el error, pero el require_once no.
+include("./src/update/update.php");
+require_once("./Conexion.php");
+
+$connection = new Conexion();
+$db = $connection->connect();
+
+if(isset($_POST['update']))
+{
+    // inicializar clase Conexion y llamamos a la función connect.
+    // definimos los inputs
+    $name = $_POST['nombre'];
+    $origen = $_POST['origen'];
+    $tipo = $_POST['tipo'];
+    $calorias = $_POST['calorias'];
+    $imagen = $_POST['img'];
+    $update = new Update();
+    $updateFunction = $update->update($name, $origen, $tipo, $calorias, $imagen);
+    $result = $db->query($updateFunction);
+}
+
+?>
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <title>Hello, world!</title>
+    <title>Hello, world!</title>
 </head>
 
 <body>
-  <h1>COMIDA</h1>
 
-  <form>
-    <div class="mb-3">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombre">
+    <h1>Editar</h1>
+  
 
-    </div>
-    <div class="mb-3">
-      <label for="origen" class="form-label">Origen</label>
-      <input type="text" class="form-control" id="origen">
+    <form method="post">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="nombre">
 
-    </div>
-    <div class="mb-3">
-      <label for="tipo" class="form-label">Tipo</label>
-      <input type="text" class="form-control" id="tipo">
-    </div>
-    <div class="mb-3">
-      <label for="calorias" class="form-label">Calorias</label>
-      <input type="text" class="form-control" id="calorias">
+        </div>
+        <div class="mb-3">
+            <label for="origen" class="form-label">Origen</label>
+            <input type="text" class="form-control" name="origen" id="origen">
 
-    </div>
-    <div class="mb-3">
-      <label for="img" class="form-label">Img</label>
-      <input class="form-control" type="file" id="img">
-    </div>
+        </div>
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo</label>
+            <input type="text" class="form-control" name="tipo" id="tipo">
+        </div>
+        <div class="mb-3">
+            <label for="calorias" class="form-label">Calorias</label>
+            <input type="text" class="form-control" name="calorias" id="calorias">
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+        </div>
+        <div class="mb-3">
+            <label for="img" class="form-label">Img</label>
+            <input class="form-control" type="file" name="img" id="img">
+        </div>
+        <button type="submit" name="update" class="btn btn-primary">Update</button>
+    </form>
 
-  <section>Read</section>
-  <?php
-    require_once './src/read/read.php';
-    ?>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-  </script>
+    <section>Read</section>
+    <?php require_once("./src/read/read.php")?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <table class="table">
 
-
-
+  
+</table>
+    
 </body>
-
 </html>

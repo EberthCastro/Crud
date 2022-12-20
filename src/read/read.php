@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "recipesdb";
+$dbname = "recetas";
 $tableName = "recetas";
 
 try {
@@ -27,7 +27,8 @@ try {
         <p class="card-text">' . $row["pais_de_origen"] . '</p>
         <p class="card-text">' . $row["contenido_calorico"] . '</p>
       </div>
-      <button class="btn btn-primary">Edit</button>
+      <button class="btn btn-primary mb-2">Edit</button>
+      <button class="btn btn-danger">Delete</button>
     </div>';
   }
   echo '</row>';

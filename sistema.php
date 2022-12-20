@@ -3,12 +3,12 @@
 require_once("Autoload.php");
 
 
-$pdo = new PDO('mysql:host=localhost;dbname=crud', 'root', '');
+$pdo = new PDO('mysql:host=localhost;dbname=recetas', 'root', '');
 $objUsuario = new Comida($pdo);
 
 
-// $insert = $objUsuario->insertarComida("Lomito Saltado","Peru","delicioso", 2000);
-// echo $insert;
+    $insert = $objUsuario->insertarComida("Lomito Saltado","Peru","delicioso", 2000);
+    echo $insert;
 
 
 //extrae todos los resgistros
