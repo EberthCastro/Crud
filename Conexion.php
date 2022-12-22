@@ -5,7 +5,7 @@ class Conexion
     public $host = "localhost";
     public $user = "root";
     public $password = "";
-    public $db = "recetas";
+    public $db = "recipesdb";
     // we are created $connect to use for sql instructions
 
     public function __construct(){
